@@ -1,0 +1,62 @@
+<html>
+	<head>
+		<title>Recent Uploads</title>
+		<script src="../scripts/jquery-1.6.1.min.js"></script>
+		<script src="../scripts/imgur.js"></script>
+		<script src="../scripts/chrome.js"></script>
+		<script src="../scripts/config.js"></script>
+		<script>
+			$(document).ready(function() {
+				function handleFileSelect(evt){
+					evt.stopPropagation();
+					evt.preventDefault();
+					
+					var files = evt.dataTransfer.files;
+					var output = [];
+					for (var i = 0, f; f = files[i]; i++) {
+						// Only process image files.
+						if (!f.type && $.inArray(f.type, config.allowedTypes) > -1) {
+							continue;
+						}
+
+						var reader = new FileReader();
+
+						// Closure to capture the file information.
+						reader.onload = (function(theFile){
+							return function(e){
+								var dataUrl = e.target.result;
+								uploadImage(getBase64(dataUrl));
+							};
+						})(f);
+
+						// Read in the image file as a data URL.
+						reader.readAsDataURL(f);
+					}
+					setContentText("dropped!");
+				}
+				
+				function handleDragOver(evt){
+					evt.stopPropagation();
+					evt.preventDefault();
+					setContentText("dragging!");
+				}
+				
+				function setContentText(text){
+					$("#content").text(text);
+				}
+				
+				document.addEventListener('dragover', handleDragOver, false);
+				document.addEventListener('drop', handleFileSelect, false);
+			});
+		</script>
+		<link href="../styles/style.css" rel="stylesheet" type="text/css" />
+	</head>
+	<body>
+		<div id="content">
+			Waiting
+		</div>
+		<div id="output">
+			
+		</div>
+	</body>
+</html>
