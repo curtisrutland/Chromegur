@@ -15,6 +15,3 @@ function addMenuItem(title, context, callback) {
     chrome.contextMenus.create({ "title": title, "contexts": context, "onclick": callback });
 }
 
-addMenuItem("Try Rehosting Link", ["link"], linkOnClick);
-addMenuItem("Rehost Image", ["image"], imageOnClick);
-addMenuItem("Capture View", ["page"], pageOnClick);
