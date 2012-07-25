@@ -1,28 +1,27 @@
-<script src="../scripts/jquery-1.6.1.min.js"></script>
-<script src="../scripts/context.js"></script>
-<script src="../scripts/chrome.js"></script>
-<script src="../scripts/imgur.js"></script>
-<script src="../scripts/config.js"></script>
+<script src="../scripts/jquery.js"></script>
+<script src="../scripts/chromegur.js"></script>
 <script>
-	addMenuItem("Try Rehosting Link", ["link"], linkOnClick);
-	addMenuItem("Rehost Image", ["image"], imageOnClick);
-	addMenuItem("Capture View", ["page"], pageOnClick);
-	
-	chrome.browserAction.onClicked.addListener(function (tab) {
-		chrome.tabs.create({
-			'url': chrome.extension.getURL('html/action.html')
-		});    
-	});
+    var imgur = new Imgur();
 
-	chrome.extension.onRequest.addListener(function(request, sender, sendResponse){
-		console.log(JSON.stringify(request));
-		if(request.action == "getRecent"){
-			console.log("sending array");
-			sendResponse({"data": recent});
-		}
-		else{
-			console.log("sending blank");
-			sendResponse({});
-		}
-	});
+    function onClickLink(info, tab) {
+        imgur.uploadImage(info.linkUrl);
+    }
+
+    function onClickImage(info, tab) {
+        imgur.uploadImage(info.srcUrl);
+    }
+
+    function onClickPage(info, tab) {
+        imgur.captureVisibleWindow(tab.windowId);
+    }
+
+    Tools.addMenuItem("Try Rehosting Link", ["link"], onClickLink);
+    Tools.addMenuItem("Rehost Image", ["image"], onClickImage);
+    Tools.addMenuItem("Capture View", ["page"], onClickPage);
+
+    chrome.browserAction.onClicked.addListener(function (tab) {
+        chrome.tabs.create({
+            'url': chrome.extension.getURL('html/action.html')
+        });
+    });
 </script>
