@@ -1,18 +1,6 @@
 var Config = {
-    api: {
-        "uploadUrl": "http://api.imgur.com/2/upload.json",
-        "key": "04d465deabb22c7558164bafd4c1781a"
-    },
-    allowedTypes: [
-		"image/jpeg",
-		"image/png",
-		"image/gif",
-		"image/tiff",
-		"image/x-tiff",
-		"image/bmp",
-		"image/x-windows-bmp",
-		"image/xcf"
-	]
+    api: { uploadUrl: "http://api.imgur.com/2/upload.json", key: "04d465deabb22c7558164bafd4c1781a" },
+    allowedTypes: [ "image/jpeg", "image/png", "image/gif", "image/tiff", "image/x-tiff", "image/bmp", "image/x-windows-bmp", "image/xcf" ]
 };
 
 var Tools = {
@@ -89,7 +77,11 @@ Imgur.prototype.onUploadSucceeded = function (data) {
 
 Imgur.prototype.onUploadFailed = function (data) {
     Tools.setErrorBadge();
-    alert(data.error.message);
+	var message;
+	if(!data.responseText) message = "Unknown error.";
+	else 
+		message = JSON.parse(data.responseText).error.message;
+    alert(message);
 };
 
 Imgur.prototype.uploadImage = function (image, success, error) {
