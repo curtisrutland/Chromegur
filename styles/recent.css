@@ -1,0 +1,15 @@
+.linkTextBox
+{
+    color: gray;
+    width: 200px;
+}
+
+#referenceSection
+{
+    visibility: collapse;
+}
+
+.thumbnail
+{
+    margin-left: 10px;
+}
