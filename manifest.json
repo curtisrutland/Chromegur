@@ -10,6 +10,7 @@
   },
   "browser_action": {
 	"default_icon": "images/icon19.png",
-	"default_title": "Chromegur"
+	"default_title": "Chromegur",
+	"default_popup": "html/popup.html"
   }
 }

@@ -16,8 +16,8 @@ Tools.addMenuItem("Try Rehosting Link", ["link"], onClickLink);
 Tools.addMenuItem("Rehost Image", ["image"], onClickImage);
 Tools.addMenuItem("Capture View", ["page"], onClickPage);
 
-chrome.browserAction.onClicked.addListener(function (tab) {
-	chrome.tabs.create({
-		'url': chrome.extension.getURL('html/action.html')
-	});
-});
+//chrome.browserAction.onClicked.addListener(function (tab) {
+//	chrome.tabs.create({
+//		'url': chrome.extension.getURL('html/action.html')
+//	});
+//});

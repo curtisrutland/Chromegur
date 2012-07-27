@@ -1,18 +1,97 @@
+<!doctype html />
 <html>
-	<head>
-		<title>Recent Uploads</title>
-		<script src="../scripts/jquery-1.6.1.min.js"></script>
-		<script src="../scripts/recent.js"></script>
-		<script>
-			$(document).ready(function() {
-				getRecent();
-			});
-		</script>
-		<link href="../styles/style.css" rel="stylesheet" type="text/css" />
-	</head>
-	<body>
-		<div id="recent">
-			No recent uploads.
-		</div>
-	</body>
+<head>
+    <title>Recent Imgur Uploads</title>
+    <script src="../scripts/jquery.js"></script>
+    <script src="../scripts/chromegur.js"></script>
+    <script src="../scripts/recent.js"></script>
+    <style>
+        .linkTextBox
+        {
+            color: gray;
+            width: 200px;
+        }
+        
+        #referenceSection
+        {
+            visibility: collapse;
+        }
+        
+        .thumbnail
+        {
+            margin-left: 10px;   
+        }
+    </style>
+</head>
+<body>
+    <h1>
+        Recent Imgur Uploads</h1>
+    <div id="uploads">
+    </div>
+    <div id="referenceSection">
+        <table id="referenceTable">
+            <tbody>
+                <tr>
+                    <td>
+                        <label for="referenceOriginal" id="referenceOriginalLabel">
+                            Original:</label>
+                    </td>
+                    <td>
+                        <input readonly="true" type="text" id="referenceOriginal" value="placeholder" class="linkTextBox" />
+                    </td>
+                    <td rowspan="6">
+                        <img id="referenceThumbnailImage" src="http://i.imgur.com/86BV3l.jpg" alt="thumbnail" class="thumbnail" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="referenceImgurPage" id="referenceImgurPageLabel">
+                            Imgur Page:</label>
+                    </td>
+                    <td>
+                        <input readonly="true" type="text" id="referenceImgurPage" value="placeholder" class="linkTextBox" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="referenceDeletePage" id="referenceDeletePageLabel">
+                            Delete Page:</label>
+                    </td>
+                    <td>
+                        <input readonly="true" type="text" id="referenceDeletePage" value="placeholder" class="linkTextBox" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="referenceSmallSquare" id="referenceSmallSquareLabel">
+                            Small Square:</label>
+                    </td>
+                    <td>
+                        <input readonly="true" type="text" id="referenceSmallSquare" value="placeholder"
+                            class="linkTextBox" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="referenceLargeThumbnail" id="referenceLargeThumbnailLabel">
+                            Large Thumbnail:</label>
+                    </td>
+                    <td>
+                        <input readonly="true" type="text" id="referenceLargeThumbnail" value="placeholder"
+                            class="linkTextBox" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="referenceUploadedOn" id="referenceUploadedOnLabel">
+                            Uploaded On</label>
+                    </td>
+                    <td>
+                        <input readonly="true" type="text" id="referenceUploadedOn" value="placeholder" class="linkTextBox" />
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
 </html>
