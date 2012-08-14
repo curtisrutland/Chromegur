@@ -3,6 +3,7 @@
 <head>
     <title>Popup</title>
     <script src="../scripts/jquery.js"></script>
+	<script src="../scripts/popup.js"></script>
     <link rel="Stylesheet" type="text/css" href="../styles/popup.css" />
 </head>
 <body>
@@ -13,18 +14,5 @@
             <li><a href="#" id="settingsLink">Settings</a></li>
         </ul>
     </div>
-    <script>
-        $("#recentLink").on("click", function () {
-            chrome.tabs.create({ url: chrome.extension.getURL("html/recent.html") });
-        });
-
-        $("#pasteDragLink").on("click", function () {
-            chrome.tabs.create({ url: chrome.extension.getURL("html/manual.html") });
-        });
-
-        $("#settingsLink").on("click", function () {
-
-        });
-    </script>
 </body>
 </html>

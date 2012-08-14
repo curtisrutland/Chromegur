@@ -1,16 +1,17 @@
 {
-  "name": "Chromegur",
-  "description": "Rehosts images on imgur. Also tries with image links.",
-  "version": "0.1",
-  "permissions": ["contextMenus", "tabs", "http://*/", "https://*/*"],
-  "background_page": "html/background.html",
-  "icons": {
-	"16": "images/icon16.png",
-	"48": "images/icon48.png"
-  },
-  "browser_action": {
-	"default_icon": "images/icon19.png",
-	"default_title": "Chromegur",
-	"default_popup": "html/popup.html"
-  }
+	"manifest_version": 2,
+	"name": "Chromegur",
+	"description": "Rehosts images on imgur. Also tries with image links.",
+	"version": "0.2",
+	"permissions": ["contextMenus", "tabs", "http://*/", "https://*/*"],
+	"background": { "scripts": [ "scripts/jquery.js", "scripts/tools.js", "scripts/imgur.js", "scripts/init.js" ] },
+	"icons": {
+		"16": "images/icon16.png",
+		"48": "images/icon48.png"
+	},
+	"browser_action": {
+		"default_icon": "images/icon19.png",
+		"default_title": "Chromegur",
+		"default_popup": "html/popup.html"
+	}
 }
